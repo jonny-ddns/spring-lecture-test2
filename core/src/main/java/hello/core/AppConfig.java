@@ -14,16 +14,17 @@ import org.springframework.context.annotation.Configuration;
 
 //DI container
 //구현객체를 생성 및 연결하는 역할
+//--> 애노테이션 이반 자바 설정 클래스
 @Configuration
 public class AppConfig {
     //생성할 구현객체 선택
-    //하지만 이것도 리팩토링할 수 있다
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 
     //MemberService 구현객체 주입하기
     
     //@bean -> 스프링 컨테이너에 등록하기
+    //자바 코드로 스프링 빈을 등록하면 생성자를 호출하면서 의존관계 주입도 같이 처리된다
     @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());

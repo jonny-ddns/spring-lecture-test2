@@ -7,7 +7,6 @@ import hello.core.member.Member;
 import hello.core.repository.MemberRepository;
 //import hello.core.repository.MemoryMemberRepository;
 
-
 /*
 정적인 의존관계
     --> 애플리케이션을 실행하지 않아도 관계를 분석할 수 있는것
@@ -36,7 +35,8 @@ public class OrderServiceImpl implements OrderService{
     //이는 마치 배우가 대본을 선택하는 것과 같다
     //구현체에 의존한다 --> DIP 위반
     //클라이언트에 해당하는 OrderServiceImpl 코드도 수정해야함 --> OCP 원칙 위반
-    //해결책 ; 별도의 설정클래스를 마련해 구현객체를 생성하고 연결하는 책임을 부여한다 --> config 클래스
+    //해결책 ; 별도의 설정클래스(AppConfig)를 마련해 구현객체를 생성하고 연결하는 책임을 부여한다
+    //역할이 분리되어 각각의 책임에 집중할 수 있다
 //    private MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     //생성자 주입 방식
-    // MemberRepository, DiscountPolicy 객체 주입할 수 있는 코드
+    //MemberRepository, DiscountPolicy 객체 주입할 수 있는 코드
     //결과 ; 구현객체에 대한 코드가 사라진다. 외부 설정파일에서 역할 수행하기 때문
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
@@ -57,5 +57,10 @@ public class OrderServiceImpl implements OrderService{
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice);
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    //싱글톤 여부 테스트
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

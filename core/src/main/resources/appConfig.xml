@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--AppConfig.java 와 형식이 동일하다
+스프링이 관리하도록 bean 으로 등록하는 역할-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--빈 등록하기, DI 주입하기-->
+    <!--bean. id 등록할 이름 / class 패키지명을 포함한 클래스 -->
+    <!--constructor-arg. name 등록할 이름 / ref 참고할 메서드? -->
+
+    <!--memberService 등록-->
+    <bean id="memberService" class="hello.core.memberService.MemberServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository" />
+    </bean>
+
+    <!--orderService 등록-->
+    <bean id="orderService" class="hello.core.order.OrderServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository" />
+        <constructor-arg name="discountPolicy" ref="discountPolicy" />
+    </bean>
+
+    <!--memberRepository 등록-->
+    <bean id="memberRepository"
+          class="hello.core.repository.MemoryMemberRepository" />
+
+    <!--discountPolicy 등록-->
+    <bean id="discountPolicy" class="hello.core.discount.RateDiscountPolicy" />
+</beans>

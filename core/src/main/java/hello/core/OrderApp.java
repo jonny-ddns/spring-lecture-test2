@@ -10,12 +10,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 //import hello.core.order.OrderServiceImpl;
 
+//Order - MemberService , OrderService 테스트
 public class OrderApp {
-    public static void main(String[] args) {
+    void execute(){
         //기존 코드
 //        MemberService memberService = new MemberServiceImpl();
 //        OrderService orderService = new OrderServiceImpl();
-        //AppConfig 객체 가져와서 구현객체 얻기
+    //AppConfig 객체 가져와서 구현객체 얻기
 //        AppConfig appConfig = new AppConfig();
 //        MemberService memberService = appConfig.memberService();
 //        OrderService orderService = appConfig.orderService();
@@ -31,12 +32,12 @@ public class OrderApp {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
         OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
-
         long memberId = 1L;
+
         Member member = new Member(memberId, "홍길동", Grade.VIP);
         memberService.join(member);
 
-        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Order order = orderService.createOrder(memberId, "itemA", 15000);
         System.out.println(order);
     }
 }

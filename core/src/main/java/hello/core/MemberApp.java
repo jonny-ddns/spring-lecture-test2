@@ -7,11 +7,12 @@ import hello.core.memberService.MemberService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+//Member 설정 테스트
 public class MemberApp {
-    public static void main(String[] args) {
-        //기존코드
+    void execute() {
+        /*기존코드 - 순수 자바코드*/
+        //AppConfig 를 통한 의존관계 주입
 //        MemberService memberService = new MemberServiceImpl();
-        //AppConfig를 통한 의존관계 주입
 //        AppConfig appConfig = new AppConfig();
 //        MemberService memberService = appConfig.memberService();
 //
@@ -22,9 +23,16 @@ public class MemberApp {
 //        System.out.println("member1 : "+ member1.getName());
 //        System.out.println("member2 : "+ member2.getName());
 //        System.out.println("동일한 객체인가 : "+ member1.getName().equals(member2.getName()));
+
+        /*스프링으로 코딩*/
+        /*
+        ApplicationContext ; 스프링 컨테이너(인터페이스)
+        애노테이션 설정한 config 객체(AppConfig)파일을 스프링 객체로 얻어오기
+
+        Bean 설정한 모든 객체가 스프링 컨테이너에 등록된다(관리된다)
         
+         */
         
-        /* 스프링으로 코딩 */
         //애노테이션 붙은 객체를 ApplicationContext 에서 관리하도록 지정
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
@@ -40,9 +48,9 @@ public class MemberApp {
         memberService.join(member1);
 
         Member member2 = memberService.findMember(1L);
-        System.out.println("member1 : "+ member1.getName());
-        System.out.println("member2 : "+ member2.getName());
-        System.out.println("동일한 객체인가 : "+ member1.getName().equals(member2.getName()));
+        System.out.println("member1 : " + member1.getName());
+        System.out.println("member2 : " + member2.getName());
+        System.out.println("동일한 객체인가 : " + member1.getName().equals(member2.getName()));
     }
 }
 

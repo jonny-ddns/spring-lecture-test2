@@ -30,7 +30,6 @@ public class MemberApp {
         애노테이션 설정한 config 객체(AppConfig)파일을 스프링 객체로 얻어오기
 
         Bean 설정한 모든 객체가 스프링 컨테이너에 등록된다(관리된다)
-        
          */
         
         //애노테이션 붙은 객체를 ApplicationContext 에서 관리하도록 지정

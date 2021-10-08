@@ -5,6 +5,7 @@ import hello.core.discount.DiscountPolicy;
 //import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.repository.MemberRepository;
+import org.springframework.stereotype.Component;
 //import hello.core.repository.MemoryMemberRepository;
 
 /*
@@ -29,6 +30,8 @@ import hello.core.repository.MemberRepository;
     즉 정적코드는 정적으로, 동적코드는 동적으로 두게 된다
  */
 /*참고로 화살표 방향으로 의존한다는 의미*/
+
+@Component
 public class OrderServiceImpl implements OrderService{
     //new 로 직접 생성하면 DiscountPolicy 인터페이스 뿐만 아니라 구현체도 함께 코딩하게 된다
     //코드가 작성된다 --> 코딩시 유지보수 대상 = 수정작업 필요함

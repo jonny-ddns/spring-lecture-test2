@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 //DI container
 //구현객체를 생성 및 연결하는 역할
-//--> 애노테이션 이반 자바 설정 클래스
+//--> 애노테이션 기반 자바 설정 클래스
 @Configuration
 public class AppConfig {
     //생성할 구현객체 선택

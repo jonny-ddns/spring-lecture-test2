@@ -28,7 +28,7 @@ public class ConfigurationSingletonTest {
     @Test
     void configurationDeep(){
         ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
-        //AppConfig를 빈으로 가져오기
+        //AppConfig 를 빈으로 가져오기
         //클래스 명 뒤에 다른 명칭이 붙는다
         //스프링이 임의의 다른 클래스를 생성함
         

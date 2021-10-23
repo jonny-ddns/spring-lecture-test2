@@ -38,7 +38,7 @@ class ApplicationContextBasicFindTest {
     }
 
     @Test
-    @DisplayName("빈 이름으로 조회되지 안되는 경우 예외 잘 발생하는지")
+    @DisplayName("빈 이름으로 조회되지 않는 경우 예외 잘 발생하는지")
     void findBeanByNameFail(){
         //No bean named 'test' available
 //        ac.getBean("test", MemberServiceImpl.class);

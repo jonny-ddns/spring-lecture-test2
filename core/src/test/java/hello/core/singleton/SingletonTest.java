@@ -29,7 +29,6 @@ public class SingletonTest {
         Assertions.assertThat(memberService1).isNotSameAs(memberService2);
     }
 
-
     @Test
     @DisplayName("싱글톤 패턴 적용해 객체 사용하기")
     void singletonServiceTest(){
@@ -53,5 +52,4 @@ public class SingletonTest {
         //같은 객체인지 확인하기
         Assertions.assertThat(memberService1).isSameAs(memberService2);
     }
-
 }
